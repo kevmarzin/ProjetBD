@@ -1,0 +1,30 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Aide.chm
+Contents file=Table of Contents.hhc
+Default Window=Recherche
+Default topic=Introduction.htm
+Display compile progress=No
+Full-text search=Yes
+Index file=Index.hhk
+Language=0x40c Français (France)
+
+[WINDOWS]
+Recherche="Recherche","Table of Contents.hhc","Index.hhk","Introduction.htm",,,,,,0x2520,,0x3006,,,,,,,,0
+
+
+[FILES]
+Association.htm
+Contrainte.htm
+default.html
+Entité.htm
+Introduction.htm
+Liens.htm
+Relation.htm
+Reverse engineering.html
+Schéma entité association.html
+Schéma relationnel.html
+Détails techniques.html
+
+[INFOTYPES]
+

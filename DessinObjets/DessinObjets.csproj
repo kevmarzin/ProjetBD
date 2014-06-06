@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{56B8DA7A-1260-442A-A18D-E0C0E20736B8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DessinObjets</RootNamespace>
+    <AssemblyName>DessinObjets</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publier\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <PublisherName>Michel BAUDERON</PublisherName>
+    <SuiteName>Dessin</SuiteName>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\Debug\DessinObjets.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DessinObjets.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>43605B44B3F6B36CE99E860CA442C2EB67323047</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DessinObjets_CléTemporaire.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Chung.Adapters">
+      <HintPath>..\..\..\..\Projects 2012\GraphRewriting\GraphRewriting\bin\Debug\Microsoft.Chung.Adapters.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Chung.Control">
+      <HintPath>..\..\..\..\Projects 2012\GraphRewriting\GraphRewriting\bin\Debug\Microsoft.Chung.Control.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Chung.Core">
+      <HintPath>..\..\..\..\Projects 2012\GraphRewriting\GraphRewriting\bin\Debug\Microsoft.Chung.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Chung.Visualization">
+      <HintPath>..\..\..\..\Projects 2012\GraphRewriting\GraphRewriting\bin\Debug\Microsoft.Chung.Visualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.GLEE">
+      <HintPath>..\..\..\..\Projects 2012\GraphRewriting\GraphRewriting\bin\Debug\Microsoft.GLEE.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccèsSQL.cs" />
+    <Compile Include="Action.cs" />
+    <Compile Include="APropos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="APropos.Designer.cs">
+      <DependentUpon>APropos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Champ.cs" />
+    <Compile Include="Construit.cs" />
+    <Compile Include="Contrainte.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphe.Designer.cs">
+      <DependentUpon>Graphe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layout.cs" />
+    <Compile Include="ListeNoeuds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListeNoeuds.Designer.cs">
+      <DependentUpon>ListeNoeuds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parametres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parametres.Designer.cs">
+      <DependentUpon>Parametres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Noeud.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relation.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Trait.cs" />
+    <Compile Include="Visionneuse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visionneuse.Designer.cs">
+      <DependentUpon>Visionneuse.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="APropos.resx">
+      <DependentUpon>APropos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphe.af.resx">
+      <DependentUpon>Graphe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphe.en.resx">
+      <DependentUpon>Graphe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphe.fr.resx">
+      <DependentUpon>Graphe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.en.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.fr.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphe.resx">
+      <DependentUpon>Graphe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeNoeuds.resx">
+      <DependentUpon>ListeNoeuds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parametres.resx">
+      <DependentUpon>Parametres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Ressources.fr.resx" />
+    <EmbeddedResource Include="Visionneuse.resx">
+      <DependentUpon>Visionneuse.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Aide.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pointer_6127.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorDialog_671.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom_5442.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomOut_15x15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataGenerator_10021.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Table_748_32.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DBSchema_12823_16x_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FillUp.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book_open.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_Next_16xSM_color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_previous_16xMD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureBoxFastForward.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureBoxFastForwardMouseDown.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureBoxFastForwardMouseOver.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureBoxReverse.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureBoxReverseMouseDown.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureBoxReverseMouseOver.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataContainer_MoveFirstHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataContainer_MoveLastHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataContainer_MoveNextHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataContainer_MovePreviousHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataContainer_NewRecordHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CascadeWindowsHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TileWindowsHorizontallyHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintPreviewHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintEntireDocument.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diagram_32XMD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddAssociation_10443.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditAssociation_10444.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditKey_309.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Relation_8467_16X.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Relation_8467_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomToFit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddForm_369_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddTable_5632_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataGenerator_10021_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DatabaseReference_10472.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataTable_8468.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DBSchema_12823.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SoftwareDefinitionModel_11321_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutEditorPart_6030.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SQL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EntityDataModel_table_Mapping_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Redo_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Undo_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="zu\DessinObjets.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

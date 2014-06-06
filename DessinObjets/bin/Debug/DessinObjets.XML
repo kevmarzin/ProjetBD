@@ -1,0 +1,1488 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DessinObjets</name>
+    </assembly>
+    <members>
+        <member name="T:DessinObjets.AccèsSQL">
+            <summary>
+            Classe destinée à simplifier les accès à la base de données
+            </summary>
+        </member>
+        <member name="M:DessinObjets.AccèsSQL.#ctor(System.String,System.String)">
+            <summary>
+            Création d'un accès à la base de données et obtention de la liste des tables
+            et des contraintes référentielles
+            </summary>
+            <param name="catalog">Nom de la base</param>
+        </member>
+        <member name="M:DessinObjets.AccèsSQL.Dispose">
+            <summary>
+            Implémentation de l'interface IDisposable
+            </summary>
+        </member>
+        <member name="M:DessinObjets.AccèsSQL.ExecuteCommand(System.String)">
+            <summary>
+            Retourne la liste des tables
+            </summary>
+            <param name="script">Chaine de connexion à la base de données</param>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.AccèsSQL.Lecteur(System.String)">
+            <summary>
+            Renvoie un lecteur associé à la requête
+            </summary>
+            <param name="query">Requête</param>
+            <returns>Un lecteur de données</returns>
+        </member>
+        <member name="M:DessinObjets.AccèsSQL.GetSQLServerInstances">
+            <summary>
+            Retourne les instances SQL Server disponibles sur le réseau
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.AccèsSQL.GetDatabases(System.String)">
+            <summary>
+            Retourne la liste des bases de données disponibles sur un serveur
+            </summary>
+            <param name="conStr"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DessinObjets.AccèsSQL.ConnexionString">
+            <summary>
+            Chaine de connexion à la base de données
+            </summary>
+        </member>
+        <member name="P:DessinObjets.AccèsSQL.Tables">
+            <summary>
+            Liste des tables
+            </summary>
+        </member>
+        <member name="P:DessinObjets.AccèsSQL.ForeignKeys">
+            <summary>
+            Liste des contraintes référentielles
+            </summary>
+        </member>
+        <member name="T:DessinObjets.ISupprimable">
+            <summary>
+            Interface pour les objets pouvant être supprimés
+            </summary>
+        </member>
+        <member name="M:DessinObjets.ISupprimable.Supprime">
+            <summary>
+            Méthode de suppression
+            </summary>
+        </member>
+        <member name="M:DessinObjets.ISupprimable.Restaure">
+            <summary>
+            Méthode de restauration
+            </summary>
+        </member>
+        <member name="M:DessinObjets.ISupprimable.RestaureParams(DessinObjets.ISupprimable)">
+            <summary>
+            Restauration des paramètres
+            </summary>
+            <param name="obj">Données à restaurer</param>
+        </member>
+        <member name="T:DessinObjets.Action">
+            <summary>
+            Classe formalisant les actions
+            /// </summary>
+        </member>
+        <member name="M:DessinObjets.Action.#ctor(DessinObjets.Type_Action,System.Collections.Generic.List{System.Object})">
+            <summary>
+            Constructeur
+            </summary>
+            <param name="type">Type d'action</param>
+            <param name="objets">Liste de paramètres</param>
+        </member>
+        <member name="M:DessinObjets.Action.AddSubAction(DessinObjets.Action)">
+            <summary>
+            Ajout des sous actions dépendant de l'action principale
+            </summary>
+            <param name="ac"></param>
+        </member>
+        <member name="M:DessinObjets.Action.Undo">
+            <summary>
+            Méthode Undo
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Action.Redo">
+            <summary>
+            Méthode Redo
+            </summary>
+        </member>
+        <member name="T:DessinObjets.Type_Action">
+            <summary>
+            Type d'action disponible pour le undo redo
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Type_Action.Créer">
+            <summary>
+            Création d'un objet
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Type_Action.Détruire">
+            <summary>
+            Suppression d'un objet
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Type_Action.Déplacer">
+            <summary>
+            Déplacement d'un noeud
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Type_Action.EnBloc">
+            <summary>
+            Mouvement en bloc
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Type_Action.Paramètres">
+            <summary>
+            Modification des paramètres
+            </summary>
+        </member>
+        <member name="F:DessinObjets.APropos.components">
+            <summary>
+            Variable nécessaire au concepteur.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.APropos.Dispose(System.Boolean)">
+            <summary>
+            Nettoyage des ressources utilisées.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.APropos.InitializeComponent">
+            <summary>
+            Méthode requise pour la prise en charge du concepteur - ne modifiez pas
+            le contenu de cette méthode avec l'éditeur de code.
+            </summary>
+        </member>
+        <member name="T:DessinObjets.ConstructeurType">
+            <summary>
+            Casse construisant un type à partir d'une relation
+            </summary>
+        </member>
+        <member name="M:DessinObjets.ConstructeurType.Construit(System.Data.DataTable)">
+            <summary>
+            Constructeur
+            </summary>
+            <param name="relation">Nom de la relation</param>
+            <returns></returns>
+        </member>
+        <member name="T:DessinObjets.Trait">
+            <summary>
+            La classe Trait représente un trait reliant deux noeuds (par leurs bords), sa source et sa destination.
+            Le trait a une épaisseur et une couleur
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Trait.supprimé">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Trait.débutTrait">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Trait.finTrait">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Trait.#ctor">
+            <summary>
+            Constructeur générique
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Trait.#ctor(DessinObjets.Noeud,DessinObjets.Noeud,System.Drawing.Color,System.Int32)">
+            <summary>
+            Création d'un trait de couleur c, d'épaisseur e, reliant
+            les rectangles source et destination
+            </summary>
+            <param name="sour">Rect source</param>
+            <param name="dest">Rect destination</param>
+            <param name="c">couleur initiale</param>
+            <param name="e">epaisseur initiale</param>
+        </member>
+        <member name="M:DessinObjets.Trait.Supprime">
+            <summary>
+            Suppression du trait
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Trait.Restaure">
+            <summary>
+            Restauration du trait
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Trait.Dessine(System.Drawing.Graphics,System.Single,System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Dessine le trait
+            </summary>
+            <param name="graphics">zone d'affichage</param>
+            <param name="zoom">Facteur de zoom</param>
+            <param name="origin">Origine du dessin</param>
+            <param name="origineZoom">Centre d'homothétie</param>
+        </member>
+        <member name="M:DessinObjets.Trait.Deselect">
+            <summary>
+            Désection du trait
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Trait.Contient(System.Drawing.Point)">
+            <summary>
+            Teste si le point est sur le trait
+            </summary>
+            <param name="point">Point à tester</param>
+            <returns>Vrai si le point est sur le trai</returns>
+        </member>
+        <member name="M:DessinObjets.Trait.Clone">
+            <summary>
+            Crée un clone du trait courant
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Trait.RestaureParams(DessinObjets.ISupprimable)">
+            <summary>
+            Méthode générique de restauration des paramètres de l'objet
+            </summary>
+            <param name="ancien">Anciennes valeurs</param>
+        </member>
+        <member name="M:DessinObjets.Trait.ToXML">
+            <summary>
+            Sauvegarde un trait au format Xml
+            </summary>
+            <returns>Chaîne Xml</returns>
+        </member>
+        <member name="M:DessinObjets.Trait.#ctor(System.Xml.XmlNode,System.Collections.Generic.List{DessinObjets.Noeud})">
+            <summary>
+            Lit depuis XML
+            </summary>
+            <param name="Xnode">Donnée au format XML</param>
+            <param name="noeuds">Liste des noeuds</param>
+        </member>
+        <member name="P:DessinObjets.Trait.Source">
+            <summary>
+            Source du trait
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Trait.Destination">
+            <summary>
+            Destination du trait
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Trait.Couleur">
+            <summary>
+            Couleur du trait
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Trait.Epaisseur">
+            <summary>
+            Epaisseur
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Trait.IsSelected">
+            <summary>
+            Vrai si le noeud est sélectionn"
+            </summary>
+        </member>
+        <member name="T:DessinObjets.MainForm">
+            <summary>
+            Fenêtre Principale du programme
+            </summary>
+        </member>
+        <member name="M:DessinObjets.MainForm.#ctor">
+            <summary>
+            Constructeur
+            </summary>
+        </member>
+        <member name="M:DessinObjets.MainForm.InitialisationRessources">
+            <summary>
+            Initialisation des ressources chaines de caractères
+            </summary>
+        </member>
+        <member name="M:DessinObjets.MainForm.Restore">
+            <summary>
+            Réaffichage du panneau central
+            </summary>
+        </member>
+        <member name="M:DessinObjets.MainForm.NouvelleFenêtre(System.String,DessinObjets.TypeSchéma)">
+            <summary>
+            Crée une nouvelle fenêtre fille
+            </summary>
+            <param name="titre">Titre de la fenêtre</param>
+            <param name="typeSchéma">Type de schéma à créer</param>
+            <returns></returns>
+        </member>
+        <member name="F:DessinObjets.MainForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.MainForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DessinObjets.MainForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.MainForm.Options">
+            <summary>
+            Options du programme
+            </summary>
+        </member>
+        <member name="T:DessinObjets.OptionsMain">
+            <summary>
+            Classe décrivant les options de la fenêtre principale
+            </summary>
+        </member>
+        <member name="P:DessinObjets.OptionsMain.Langue">
+            <summary>
+            Langue de l'application
+            </summary>
+        </member>
+        <member name="P:DessinObjets.OptionsMain.Chaine_Base_de_données">
+            <summary>
+            Chaine de connexion
+            </summary>
+        </member>
+        <member name="P:DessinObjets.OptionsMain.Sécurité_Intégrée">
+            <summary>
+            Type de sécurité pour l'accès à la base
+            </summary>
+        </member>
+        <member name="P:DessinObjets.OptionsMain.Serveur_Base_de_données">
+            <summary>
+            Nom du serveur
+            </summary>
+        </member>
+        <member name="P:DessinObjets.OptionsMain.Base_par_Défaut">
+            <summary>
+            Base de données par defaut
+            </summary>
+        </member>
+        <member name="P:DessinObjets.OptionsMain.Utilisateur">
+            <summary>
+            Nom utilisateur
+            </summary>
+        </member>
+        <member name="P:DessinObjets.OptionsMain.Mot_de_passe">
+            <summary>
+            Mot de passe
+            </summary>
+        </member>
+        <member name="T:DessinObjets.TypeSchéma">
+            <summary>
+            Enumération des types de graphes possibles
+            </summary>
+        </member>
+        <member name="F:DessinObjets.TypeSchéma.Graphe">
+            <summary>
+            Graphe simple
+            </summary>
+        </member>
+        <member name="F:DessinObjets.TypeSchéma.Relationnel">
+            <summary>
+            Schéma relationnel
+            </summary>
+        </member>
+        <member name="F:DessinObjets.TypeSchéma.EntitéAssociation">
+            <summary>
+            Schéma entité association
+            </summary>
+        </member>
+        <member name="F:DessinObjets.TypeSchéma.SqlReverse">
+            <summary>
+            Schéma construit par reverse engineering d'une base SQL
+            </summary>
+        </member>
+        <member name="T:DessinObjets.Graphe">
+            <summary>
+            Classe de base d'affichage d'un graphe
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Graphe.#ctor(System.String,DessinObjets.TypeSchéma,System.Windows.Forms.Form)">
+            <summary>
+            Constructeur de base
+            </summary>
+            <param name="texte">Nom du schéma</param>
+            <param name="parent">Parent Mdi</param>
+            <param name="type">Type de schéma</param>
+        </member>
+        <member name="M:DessinObjets.Graphe.#ctor(System.String,System.Windows.Forms.Form)">
+            <summary>
+            Construit le graphe à partir d'un fichier
+            </summary>
+            <param name="fileName">Nom du fichier</param>
+            <param name="parent">Parent Mdi</param>
+        </member>
+        <member name="M:DessinObjets.Graphe.ToString">
+            <summary>
+            Affichage par défaut
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Graphe.InitialisationRessources">
+            <summary>
+            Initialisation des chaines de caractères dans la langue choisie
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Graphe.Dessine(System.Drawing.Graphics,System.Single,System.Drawing.Point)">
+            <summary>
+            Cette fonction est utilisé pour l'affichage à l'écran et l'impression
+            </summary>
+            <param name="graphics">zone d'affichage</param>
+            <param name="zoom">Facteur de zoom</param>
+            <param name="origin">Origine du dessin</param>
+        </member>
+        <member name="M:DessinObjets.Graphe.CréationXML(System.String)">
+            <summary>
+            Sauvegarde XML par réflexion
+            </summary>
+            <param name="nomFichier"></param>
+        </member>
+        <member name="M:DessinObjets.Graphe.vers_SQL_Click(System.Object,System.EventArgs)">
+            <summary>
+            Création du script SQl
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DessinObjets.Graphe.applySql_Click(System.Object,System.EventArgs)">
+            <summary>
+            Création de la base sur le serveur SQL
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DessinObjets.Graphe.parcoursSQL_Click(System.Object,System.EventArgs)">
+            <summary>
+            Parcours de la table sélectionnée
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:DessinObjets.Graphe.components">
+            <summary>
+            Variable nécessaire au concepteur.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Graphe.Dispose(System.Boolean)">
+            <summary>
+            Nettoyage des ressources utilisées.
+            </summary>
+            <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        </member>
+        <member name="M:DessinObjets.Graphe.InitializeComponent">
+            <summary>
+            Méthode requise pour la prise en charge du concepteur - ne modifiez pas
+            le contenu de cette méthode avec l'éditeur de code.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Graphe.Noeuds">
+            <summary>
+            Liste des noeuds, pour créér une vue différente
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Graphe.Property_Grid">
+            <summary>
+            Booléen indiquant la façon d'afficher les paramètres
+            </summary>
+        </member>
+        <member name="T:DessinObjets.Options">
+            <summary>
+            Classe décrivant les options des différentes fenêtres
+            </summary>
+        </member>
+        <member name="T:DessinObjets.GraphLayoutType">
+            <summary>
+            Textes décrivant les différents algorithmes de disposition
+            voir aussi http://graphsharp.codeplex.com/
+            </summary>
+        </member>
+        <member name="F:DessinObjets.GraphLayoutType.Fruchterman_Reingold">
+            <summary>
+            Force-directed layout algorithm http://wiki.gephi.org/index.php/Fruchterman-Reingold
+            </summary>
+        </member>
+        <member name="F:DessinObjets.GraphLayoutType.Eades">
+            <summary>
+            The combination of attractive forces on adjacent vertices, and repulsive forces on all vertices, was first used by Eades (1984)
+            </summary>    
+        </member>
+        <member name="F:DessinObjets.GraphLayoutType.Random">
+            <summary>
+            Placement aléatoire des noeuds
+            </summary>
+        </member>
+        <member name="F:DessinObjets.GraphLayoutType.Circle">
+            <summary>
+            Placement des noeuds sur un cercle
+            </summary>
+        </member>
+        <member name="F:DessinObjets.GraphLayoutType.Kamada_Kawaii">
+            <summary>
+            Encore un "force directed layout algorithm"
+            </summary>
+        </member>
+        <member name="F:DessinObjets.GraphLayoutType.Grid">
+            <summary>
+            Placement des noeuds sur une grille
+            </summary>
+        </member>
+        <member name="F:DessinObjets.GraphLayoutType.Sugiyama">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DessinObjets.Graph">
+            <summary>
+            Classe décrivant un graphe
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Graph.#ctor(System.Collections.Generic.List{DessinObjets.Noeud},System.Collections.Generic.List{DessinObjets.Trait})">
+            <summary>
+            Constructeur
+            </summary>
+            <param name="noeuds">Noeuds</param>
+            <param name="traits">Arêtes</param>
+        </member>
+        <member name="P:DessinObjets.Graph.Noeuds">
+            <summary>
+            Liste des noeuds
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Graph.Traits">
+            <summary>
+             Liste des arêtes
+            </summary>
+        </member>
+        <member name="T:DessinObjets.GraphLayout">
+            <summary>
+            Classe utilisant la bibiliothèque Chung développée par Microsoft Reseach
+            </summary>
+        </member>
+        <member name="M:DessinObjets.GraphLayout.LayoutGraph(DessinObjets.Graph,System.Drawing.Rectangle,DessinObjets.GraphLayoutType)">
+            <summary>
+            Méthode statique de Layout
+            </summary>
+            <param name="graphe">Graphe entrée</param>
+            <param name="rectangle">Zone de dessin</param>
+            <param name="layout">Type de layout</param>
+            <returns>Le graphe repositionné</returns>
+        </member>
+        <member name="T:DessinObjets.ListeNoeuds">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.ListeNoeuds.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.ListeNoeuds.Init(System.Collections.Generic.List{DessinObjets.Noeud})">
+            <summary>
+            
+            </summary>
+            <param name="noeuds"></param>
+        </member>
+        <member name="F:DessinObjets.ListeNoeuds.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.ListeNoeuds.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DessinObjets.ListeNoeuds.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DessinObjets.Parametres">
+            <summary>
+            Boîte de dialogue générique construite par réflexion
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Parametres.objets">
+            <summary>
+            Variable utilisé pour traiter des données de type liste ou tableau
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Parametres.ObjetCourant">
+            <summary>
+            Objet dont les propriétés sont affichées par la boîte
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Parametres.#ctor(System.Object,System.Boolean)">
+            <summary>
+            Création par réflexion d'une boîte de dialogue générique 
+            de modification des propriétés d'un objet quelconque
+            </summary>
+            <param name="objetGlobal">Objet à éditer</param>
+            <param name="propGrid">sert à distinguer entre les deux types de boîtes : false pour une boîte sur mesure, true property Grid</param>
+        </member>
+        <member name="M:DessinObjets.Parametres.boutonBarreOutils_Click(System.Object,System.EventArgs)">
+            <summary>
+            Gestion de la barre d'outils pour des listes
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DessinObjets.Parametres.CreateControl(System.Reflection.PropertyInfo,System.Drawing.Point)">
+            <summary>
+            Création d'un contrôle
+            </summary>
+            <param name="propriété">Propriété de l'objet</param>
+            <param name="coordonnées">Emplacement</param>
+            <returns>Point le plus bas</returns>
+        </member>
+        <member name="M:DessinObjets.Parametres.UpdateControls">
+            <summary>
+            Met à jour les contrôles
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Parametres.Police_Click(System.Object,System.EventArgs)">
+            <summary>
+            Modification de la police
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DessinObjets.Parametres.Couleur_Click(System.Object,System.EventArgs)">
+            <summary>
+            Modification de la couleur
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DessinObjets.Parametres.ok_button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Validation des modifications
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:DessinObjets.Parametres.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Parametres.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DessinObjets.Parametres.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DessinObjets.AspectBouton">
+            <summary>
+            Classe décrivant les boutons de la barre d'outils de parcours d'une liste
+            </summary>
+        </member>
+        <member name="P:DessinObjets.AspectBouton.Texte">
+            <summary>
+            Libellé du bouton
+            </summary>
+        </member>
+        <member name="P:DessinObjets.AspectBouton.Image">
+            <summary>
+            Image du bouton
+            </summary>
+        </member>
+        <member name="T:DessinObjets.Noeud">
+            <summary>
+            La classe Noeud encapsule un rectangle avec son épaisseur et la couleur de son bord
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.supprimé">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.Supprime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.Restaure">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.compteur">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.iD">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.position">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.taille">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.couleurBordure">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.couleurFond">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.épaisseur">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.texte">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.police">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.couleurPolice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.IsSelected">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.rectAffichage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.#ctor">
+            <summary>
+            Constructeur vide, nécessaire pour la déserialisation
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.#ctor(System.Drawing.Point,System.Drawing.Size,System.Drawing.Color,System.Int32)">
+            <summary>
+            Construit un Noeud
+            </summary>
+            <param name="location">Centre</param>
+            <param name="size">Taille</param>
+            <param name="couleurBordure">couleur initiale</param>
+            <param name="épaisseur">épaisseur initiale</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.Clone">
+            <summary>
+            Crée un clone du noeud courant
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.RestaureParams(DessinObjets.ISupprimable)">
+            <summary>
+            Méthode générique de restauration des paramètres de l'objet
+            </summary>
+            <param name="ancien">Anciennes valeurs</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.Dessine(System.Drawing.Graphics,System.Single,System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Méthode de dessin
+            </summary>
+            <param name="graphics">zone d'affichage</param>
+            <param name="zoom">Facteur de zoom</param>
+            <param name="origin">Origine du dessin</param>
+            <param name="origineZoom">Centre d'homothétie</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.RectangleAffichage(System.Single,System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Zone d'affichage du noeud
+            </summary>
+            <param name="zoom">Facteur de zoom à partir de l'origine</param>
+            <param name="origin">Origine du dessin</param>
+            <param name="origineZoom">Centre d'homothétie</param>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.CentreDessin(System.Single,System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Centre du noeud à l'affichage
+            </summary>
+            <param name="zoom">Facteur de zoom</param>
+            <param name="origin">Origine du dessin</param>
+            <param name="origineZoom">Centre d'homothétie</param>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.Contains(System.Drawing.Point)">
+            <summary>
+            Teste la présence d'un point
+            </summary>
+            <param name="pt">Point à tester</param>
+            <returns>true si la forme contient le point</returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.Déplace(System.Drawing.Point)">
+            <summary>
+            Déplace le rectangle
+            </summary>
+            <param name="p">Nouvel emplacement</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.DéplaceVers(System.Drawing.Point)">
+            <summary>
+            Déplacement relatif du noeud
+            </summary>
+            <param name="Vecteur">Vecteur de déplacement</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.Select">
+            <summary>
+            Sélectionne le noeud
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.UnSelect">
+            <summary>
+             Déselectionne le noeud
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.ToXML">
+            <summary>
+            Génération XML
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.#ctor(System.Xml.XmlNode)">
+            <summary>
+            Création d'un noeud à partir d'une structure XML
+            </summary>
+            <param name="xNN"></param>
+        </member>
+        <member name="P:DessinObjets.Noeud.ID">
+            <summary>
+            Identificateur
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Position">
+            <summary>
+            Localisation
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Taille">
+            <summary>
+            Dimensions
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Epaisseur">
+            <summary>
+            Epaisseur du bord
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.CouleurBord">
+            <summary>
+            Couleur du bord
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.CouleurFond">
+            <summary>
+            Couleur du fond
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Texte">
+            <summary>
+            Texte
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Police">
+            <summary>
+            Police
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.CouleurPolice">
+            <summary>
+            Couleur de la police
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Left">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Right">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Top">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Bottom">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Centre">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Supprimé">
+            <summary>
+            Vrai si l'objet est supprimé
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.rectangle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Program.Main">
+            <summary>
+            Point d'entrée principal de l'application.
+            </summary>
+        </member>
+        <member name="T:DessinObjets.Visionneuse">
+            <summary>
+            Classe permettant de visualiser le code SQL généré avec coloration syntaxique
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Visionneuse.#ctor(System.String)">
+            <summary>
+            Constructeur
+            </summary>
+            <param name="text">Texte à afficher</param>
+        </member>
+        <member name="F:DessinObjets.Visionneuse.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Visionneuse.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DessinObjets.Visionneuse.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DessinObjets.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.AddAssociation_10443">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.AddForm_369_24">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.AddTable_5632_24">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.aide">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Aide.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.annuler">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Annuler.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.aperçu">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Aperçu avant impression.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.apropos">
+            <summary>
+              Recherche une chaîne localisée semblable à À &amp;propos de....
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.arrow_Next_16xSM_color">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.arrow_previous_16xMD">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.book_open">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.cascade">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Cascade.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.CascadeWindowsHS">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.choixBd">
+            <summary>
+              Recherche une chaîne localisée semblable à Choix de la base de données.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.choixServeur">
+            <summary>
+              Recherche une chaîne localisée semblable à Choix du serveur de bases de données.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.coller">
+            <summary>
+              Recherche une chaîne localisée semblable à Co&amp;ller.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.ColorDialog_671">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.copier">
+            <summary>
+              Recherche une chaîne localisée semblable à Co&amp;pier.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.couper">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Couper.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.createconstraintes">
+            <summary>
+              Recherche une chaîne localisée semblable à Création des contraintes référentielles.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.createDB">
+            <summary>
+              Recherche une chaîne localisée semblable à Création de la base de données.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.createtables">
+            <summary>
+              Recherche une chaîne localisée semblable à Création des tables.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DatabaseReference_10472">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DataContainer_MoveFirstHS">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DataContainer_MoveLastHS">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DataContainer_MoveNextHS">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DataContainer_MovePreviousHS">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DataContainer_NewRecordHS">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DataGenerator_10021">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DataGenerator_10021_24">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DataTable_8468">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DBSchema_12823">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.DBSchema_12823_16x_24">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Diagram_32XMD">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.EditAssociation_10444">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.edition">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Edition.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.editionAssociation">
+            <summary>
+              Recherche une chaîne localisée semblable à Edition d&apos;une association.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.editionContrainte">
+            <summary>
+              Recherche une chaîne localisée semblable à Edition d&apos;une contrainte.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.editionEntité">
+            <summary>
+              Recherche une chaîne localisée semblable à Edition d&apos;une entité.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.editionLien">
+            <summary>
+              Recherche une chaîne localisée semblable à Edition d&apos;un lien.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.editionRelation">
+            <summary>
+              Recherche une chaîne localisée semblable à Edition d&apos;une relation.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.EditKey_309">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.entité">
+            <summary>
+              Recherche une chaîne localisée semblable à Schéma &amp;entité association.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.EntityDataModel_table_Mapping_16x16">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.exempleTexte">
+            <summary>
+              Recherche une chaîne localisée semblable à Texte.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.fenetre">
+            <summary>
+              Recherche une chaîne localisée semblable à Fe&amp;nêtre.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.fermer">
+            <summary>
+              Recherche une chaîne localisée semblable à Fermer l&apos;application.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.fichier">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Fichier.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.FillUp">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.graphe">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Graphe.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.impossible">
+            <summary>
+              Recherche une chaîne localisée semblable à Connexion impossible.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.imprimer">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Imprimer.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.index">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Index.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.LayoutEditorPart_6030">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.listeBD">
+            <summary>
+              Recherche une chaîne localisée semblable à Liste des bases de données.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.listeServeurs">
+            <summary>
+              Recherche une chaîne localisée semblable à Liste des serveurs SQL.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.mosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Mosaique.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.nouveau">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Nouveau.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.options">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Options.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.outils">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Outils.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.ouvrir">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Ouvrir.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.page">
+            <summary>
+              Recherche une chaîne localisée semblable à Page.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.personnaliser">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Personnaliser.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.pictureBoxFastForward_Image">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.pictureBoxFastForwardMouseDown_Image">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.pictureBoxFastForwardMouseOver_Image">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.pictureBoxReverse_Image">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.pictureBoxReverseMouseDown_Image">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.pictureBoxReverseMouseOver_Image">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Pointer_6127">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.PrintEntireDocument">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.PrintPreviewHS">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.quitter">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Quitter.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.recherche">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Rechercher.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Redo_16x">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Relation_8467_16X">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Relation_8467_32x">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.relationnel">
+            <summary>
+              Recherche une chaîne localisée semblable à Schéma &amp;relationnel.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.rétablir">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Retablir.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.reverse">
+            <summary>
+              Recherche une chaîne localisée semblable à Reverse Engineering SQL.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.sauvegarde">
+            <summary>
+              Recherche une chaîne localisée semblable à Binaire|*.bin|Fichier xml|*.xml|Ficher csv|*.csv.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Scale">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Select">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.sélectionner">
+            <summary>
+              Recherche une chaîne localisée semblable à Sélectio&amp;nner tout.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.serveur">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Choix du serveur.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.SoftwareDefinitionModel_11321_16x">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.sommaire">
+            <summary>
+              Recherche une chaîne localisée semblable à &amp;Sommaire.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.SQL">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Table_748_32">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.TileWindowsHorizontallyHS">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.titreParametres">
+            <summary>
+              Recherche une chaîne localisée semblable à Paramètres.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Undo_16x">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Zoom_32x32">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.Zoom_5442">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.ZoomOut_15x15">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Properties.Resources.ZoomToFit">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>

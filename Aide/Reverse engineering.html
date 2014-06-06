@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="fr" http-equiv="Content-Language">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Reverse Engineering</title>
+<style type="text/css">
+@import url('sans_titre_1.css');
+</style>
+</head>
+
+<body>
+
+<h1>Reverse Engineering</h1>
+<h2>Extraction du schéma relationnel</h2>
+<p>Une connexion à une base de données relationnelle SQL Server permet d'extraire le schéma 
+relationnel de la base</p>
+<p><img alt="Menu" src="img17.gif"></p>
+<img alt="Schéma" style="float:right;width:50%;height:50%" src="img21.jpg">Un élément de menu permet de choisir  le serveur, un autre la base de données sur le serveur 
+(si on dispose des droits nécessaires.
+<p>Le programme extrait alors du dictionnaire de données, la liste des tables et leur structure ainsi que les contraintes référentielles.
+</p>
+Il affiche enfin le schéma relationnel sous forme graphique comme le montre le 
+schéma ci-contre.<p><img alt="Menu relation" src="img25.jpg"></p>
+<p>Une nouvelle partie de la barre de menu permet diverses actions :</p>
+<ul>
+	<li>extraction du schéma entité association</li>
+	<li>génération du script de création de la base de données</li>
+	<li>création de la base de données</li>
+	<li>parcours des diverses tables de la base.</li>
+</ul>
+<h2>Extraction du Schéma Entité association</h2>
+<p>A partir d'un schéma relationnel, le programme reconstruit le schéma 
+entité-association correspondant. 
+</p>
+<p>A chaque relation est associé une entité, les couples relations-liens sont traduits en contraintes référentielles et éventuellement en relations.</p>
+
+</body>
+
+</html>

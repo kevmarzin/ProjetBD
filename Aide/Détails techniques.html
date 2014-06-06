@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="fr" http-equiv="Content-Language">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Détails techniques</title>
+<link href="sans_titre_1.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Détails techniques</h1>
+<h2>Outils utilisés</h2>
+<p>Ce programme a été développé en C# dans l'environnement .Net 4.5, grâce à 
+Visual Studio 2013.</p>
+<p>L'aide a été créée grâce à l'outil
+<a href="http://www.microsoft.com/en-us/download/details.aspx?id=21138">HTML 
+Help Workshop</a>.</p>
+<h2>Structure</h2>
+<p>Le programme repose sur deux classes principales modélisant les noeuds et les 
+arêtes et implémentant la classe ISupprimable qui permet de gérer le mécanisme 
+"annuler-rétablir". Toute l'interface graphique (défilement, zoom, 
+"annuler-rétablir", couper-coller) est gérée à ce niveau.</p>
+<p>Les classes "<a href="Entité.htm">entité</a>", "<a href="Association.htm">association</a>" 
+et "<a href="Relation.htm">relation</a>" héritent de la classe "noeud", les&nbsp; 
+classes "<a href="Contrainte.htm">contrainte</a>" et "<a href="Liens.htm">lien</a>" 
+de la classe "arête". Quelques méthodes virtuelles permettent de gérer les cas 
+particuliers.</p>
+<p>Les classes, propriétés et méthodes disposent d'une documentation. </p>
+<h2>Approche</h2>
+<p>Le programme utilise intensivement le mécanisme de réflexion :</p>
+<ul>
+	<li>boîte de dialogue de modification des paramètres (entièrement créée par 
+	réflexion),</li>
+	<li>boîte de parcours d'une table, utilisant la boîte précédente et la 
+	création dynamique d'une classe.</li>
+</ul>
+<p>&nbsp;</p>
+
+</body>
+
+</html>
