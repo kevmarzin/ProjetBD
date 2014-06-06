@@ -158,6 +158,23 @@
             le contenu de cette méthode avec l'éditeur de code.
             </summary>
         </member>
+        <member name="F:DessinObjets.AttributRelation.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.AttributRelation.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DessinObjets.AttributRelation.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:DessinObjets.ConstructeurType">
             <summary>
             Casse construisant un type à partir d'une relation
@@ -285,6 +302,23 @@
         <member name="P:DessinObjets.Trait.IsSelected">
             <summary>
             Vrai si le noeud est sélectionn"
+            </summary>
+        </member>
+        <member name="F:DessinObjets.EditionContrainte.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.EditionContrainte.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DessinObjets.EditionContrainte.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
             </summary>
         </member>
         <member name="T:DessinObjets.MainForm">

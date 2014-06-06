@@ -213,6 +213,7 @@ namespace DessinObjets
         }
         #endregion
         #region Création d'objets par défaut
+
         private Noeud NoeudParDéfaut(Point point, TypeSchéma typeschéma)
         {
             Noeud noeud = null;
@@ -225,9 +226,10 @@ namespace DessinObjets
 
                 case TypeSchéma.Relationnel:
                     noeud = new Relation(point, option.Taille_Noeud, option.Couleur_Noeud, option.Épaisseur_Noeud);
-                    noeuds.Add(noeud);
+                    noeuds.Add(noeud);                    
+                    AttributRelation pa = new AttributRelation((Relation)noeud);
+                    pa.ShowDialog();
                     break;
-
            }
             return noeud;
         }
@@ -392,7 +394,6 @@ namespace DessinObjets
                     if (noeudCourant == null)
                     {
                         Noeud nouv = null;
-
                         nouv = NoeudParDéfaut(pointInModel, Option.Type_schéma);
                         if (nouv != null)
                         {
@@ -488,6 +489,9 @@ namespace DessinObjets
                                     trait = new Trait(noeudCourant, fin, option.Couleur_Lien, option.Épaisseur_Lien);
                                     break;
                                 case TypeSchéma.Relationnel:
+                                    trait = new Contrainte(noeudCourant, fin, option.Couleur_Lien, option.Épaisseur_Lien);                  
+                                    EditionContrainte pa = new EditionContrainte((Contrainte)trait, (Relation)noeudCourant, (Relation)fin);
+                                    pa.ShowDialog();
                                     break;
                                 case TypeSchéma.EntitéAssociation:
                                     break;
@@ -501,7 +505,6 @@ namespace DessinObjets
                             if (subAction != null)
                                 action.AddSubAction(subAction);
                         }
-
                         if (trait != null)
                         {
                             traits.Add(trait);
@@ -647,6 +650,7 @@ namespace DessinObjets
             Refresh();
         }
         void hScroll_MouseWheel(object sender, MouseEventArgs e) { return; }
+
         private void traitementMenu_Click(object sender, EventArgs e)
         {
             if (noeudCourant != null)
@@ -671,11 +675,19 @@ namespace DessinObjets
                         #region Suppression
                         Supprime(noeudCourant);
                         Refresh();
-                        #endregion
                         break;
+                        #endregion
+                    case "Editer la relation":
+                        #region Edition de la relation
+                        AttributRelation dial = new AttributRelation((Relation)noeudCourant);
+                        dial.ShowDialog();
+                        Refresh();
+                        break;
+                        #endregion
                 }
             }
         }
+
         private void Supprime(Noeud noeud)
         {
             Action action = new Action(Type_Action.Détruire, new List<Object> { noeud });
@@ -694,7 +706,7 @@ namespace DessinObjets
         private void Supprime(Trait trait)
         {
             trait.Supprime();
-            //           traits.Remove(trait);
+            //traits.Remove(trait);
         }
         private Noeud TrouveNoeudCourant(Point p)
         {

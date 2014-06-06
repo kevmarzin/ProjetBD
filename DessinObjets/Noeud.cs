@@ -142,6 +142,7 @@ namespace DessinObjets
         protected Rectangle rectangle
         {
             get { return new Rectangle(new Point(position.X - taille.Width / 2, position.Y - taille.Height / 2), taille); }
+            set { new Rectangle(new Point(position.X - taille.Width / 2, position.Y - taille.Height / 2), taille); }
         }
         /// <summary>
         /// 

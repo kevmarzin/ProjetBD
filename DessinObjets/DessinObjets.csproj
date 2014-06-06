@@ -106,9 +106,21 @@
     <Compile Include="APropos.Designer.cs">
       <DependentUpon>APropos.cs</DependentUpon>
     </Compile>
+    <Compile Include="AttributRelation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttributRelation.Designer.cs">
+      <DependentUpon>AttributRelation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Champ.cs" />
     <Compile Include="Construit.cs" />
     <Compile Include="Contrainte.cs" />
+    <Compile Include="EditionContrainte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditionContrainte.Designer.cs">
+      <DependentUpon>EditionContrainte.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +161,12 @@
     <EmbeddedResource Include="APropos.resx">
       <DependentUpon>APropos.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttributRelation.resx">
+      <DependentUpon>AttributRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditionContrainte.resx">
+      <DependentUpon>EditionContrainte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphe.af.resx">
       <DependentUpon>Graphe.cs</DependentUpon>

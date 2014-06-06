@@ -38,6 +38,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Parametres";
             this.Text = "Paramètres";
+            this.Load += new System.EventHandler(this.Parametres_Load);
             this.ResumeLayout(false);
 
         }

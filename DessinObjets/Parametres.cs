@@ -703,6 +703,11 @@ namespace DessinObjets
             Close();
         }
         #endregion
+
+        private void Parametres_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     /// <summary>
     /// Classe décrivant les boutons de la barre d'outils de parcours d'une liste
