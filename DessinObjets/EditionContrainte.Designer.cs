@@ -124,6 +124,7 @@
             this.Controls.Add(this.OK);
             this.Name = "EditionContrainte";
             this.Text = "EditionContrainte";
+            this.Load += new System.EventHandler(this.EditionContrainte_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

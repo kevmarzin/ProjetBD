@@ -28,13 +28,13 @@ namespace DessinObjets
 
             foreach (Champ ch in relationDestination.Champs)
                 cléRelation2.Items.Add(ch.ToString());
-/*
+
             if (contrainte.Nom != null)
             {
                 cléRelation1.Text=contrainte.ChampSource.Nom;
                 cléRelation2.Text = contrainte.ChampDestination.Nom;
                 NomRelation.Text = contrainte.Nom;
-            }*/
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace DessinObjets
 
             foreach (Champ ch in relationDestination.Champs)
                 if (ch.ToString() == cléRelation2.Text)
-                    contrainte.ChampSource = ch;
+                    contrainte.ChampDestination = ch;
 
             Close();
         }
@@ -63,6 +63,11 @@ namespace DessinObjets
         private void Annuler_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void EditionContrainte_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,8 +10,8 @@ namespace DessinObjets
     public class Contrainte : Trait
     {
         string nom;
-        Champ champSource;
-        Champ champDestination;
+        Champ champSource = new Champ();
+        Champ champDestination = new Champ();
 
         public Contrainte() : base()
         { }
