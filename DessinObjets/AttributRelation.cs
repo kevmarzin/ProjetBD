@@ -19,7 +19,16 @@ namespace DessinObjets
         {
             InitializeComponent();
             NomRelation.Text = "Relation";
-            GridChamps.Rows[0].SetValues("ID", "Int16", "0", true, false, true, "1");
+            GridChamps.Rows.Add(1);
+            int ligne = 0;
+            foreach (Champ ch in r.Champs)
+            {
+                if (ligne > 0)
+                    GridChamps.Rows.Add(1);
+
+                GridChamps.Rows[ligne].SetValues(ch.Nom, ch.TypetoString(), ch.Taille.ToString(), ch.CléPrimaire, ch.Auto, ch.NotNull, ch.IndexChamp.ToString());
+                ligne++;
+            }
             relation = r;
         }
 

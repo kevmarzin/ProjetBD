@@ -116,7 +116,7 @@ namespace DessinObjets
         /// <summary>
         /// 
         /// </summary>
-        private bool supprimé = false;
+        protected bool supprimé = false;
         /// <summary>
         /// Vrai si l'objet est supprimé
         /// </summary>

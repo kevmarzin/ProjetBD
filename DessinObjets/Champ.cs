@@ -65,21 +65,16 @@ namespace DessinObjets
             get { return indexChamp; }
             set { indexChamp = value; }
         }
-        /*
-         * INUTILE FOR THE MOMENT
         public string TypetoString()
         {
             string s="";
 
            if(type== typeof(Byte))
                s="Byte";
-
            if(type== typeof(Byte[]))
                s="Byte[]";
-
            if(type== typeof(Decimal))
                s ="Decimal";
-
            if(type== typeof(DateTime))
                s = "Date Time";
            if(type== typeof(Int16))
@@ -92,7 +87,7 @@ namespace DessinObjets
                s = "String";
             
             return s;
-        }*/
+        }
 
         public string ToString()
         {
@@ -101,4 +96,5 @@ namespace DessinObjets
             return s;
         }
     }
+    
 }

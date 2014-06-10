@@ -225,10 +225,10 @@ namespace DessinObjets
                     break;
 
                 case TypeSchéma.Relationnel:
-                    noeud = new Relation(point, option.Taille_Noeud, option.Couleur_Noeud, option.Épaisseur_Noeud);
-                    noeuds.Add(noeud);                    
+                    noeud = new Relation(point, option.Taille_Noeud, option.Couleur_Noeud, option.Épaisseur_Noeud);                  
                     AttributRelation pa = new AttributRelation((Relation)noeud);
-                    pa.ShowDialog();
+                    if (pa.ShowDialog() == DialogResult.OK)
+                        noeuds.Add(noeud);
                     break;
            }
             return noeud;
@@ -1350,11 +1350,39 @@ namespace DessinObjets
         private void vers_SQL_Click(object sender, EventArgs e)
         {          
             string findeLigne = "\r";
-            string CreateDataBase ="";
+            string CreateDataBase = "";
             CreateDataBase += "-- " + Properties.Resources.createDB + findeLigne;
-            CreateDataBase+= "CREATE DATABASE " + Text + findeLigne + findeLigne;
-            CreateDataBase += "--" + Properties.Resources.createtables + findeLigne; 
-            CreateDataBase += "--" + Properties.Resources.createconstraintes + findeLigne;
+            CreateDataBase += "CREATE DATABASE " + Text + findeLigne + findeLigne;
+            CreateDataBase += "--" + Properties.Resources.createtables + findeLigne;
+            foreach(Relation r in noeuds)
+            {
+                CreateDataBase += "CREATE TABLE " + r.Texte + " (" + findeLigne;
+                foreach(Champ c in r.Champs)
+                {
+                    CreateDataBase += "         " + c.Nom + " " + c.TypetoString();
+                    if (c.CléPrimaire)
+                        CreateDataBase += " IDENTITY";
+                    if (c.Auto)
+                        CreateDataBase += " (1,1)";
+                    if (c.NotNull)
+                        CreateDataBase += " NOT NULL";
+                    CreateDataBase += "," + findeLigne;
+                }
+                CreateDataBase = CreateDataBase.Substring(0, CreateDataBase.Length - 2);
+
+                CreateDataBase += findeLigne + ")" + findeLigne;
+                CreateDataBase += "ALTER TABLE " + r.Texte + " ADD CONSTRAINT " + r.GetCléPrimaire.Nom + "_PK PRIMARY KEY NONCLUSTERED" + findeLigne;
+                CreateDataBase += "(" + findeLigne;
+                CreateDataBase += "     " + r.GetCléPrimaire.Nom + " ASC" + findeLigne;
+                CreateDataBase += ")" + findeLigne;
+            }
+            CreateDataBase += findeLigne + "--" + Properties.Resources.createconstraintes + findeLigne;
+            foreach(Contrainte c in traits)
+            {
+                CreateDataBase += "ALTER TABLE " + c.Source.Texte + " WITH CHECK ADD CONSTRAINT " + c.Nom + "_FK0 FOREIGN KEY " + c.ChampSource.Nom + " REFERENCES " + c.Destination.Texte + " (" + c.ChampDestination.Nom + ")" + findeLigne;
+            }
+           // ALTER TABLE Relation WITH CHECK ADD  CONSTRAINT Relation_Relation_FK0 FOREIGN KEY ID REFERENCES Relation (ID)
+
             Visionneuse vs = new Visionneuse(CreateDataBase);
             vs.Show();
         }
@@ -1374,6 +1402,7 @@ namespace DessinObjets
         /// <param name="e"></param>
         private void parcoursSQL_Click(object sender, EventArgs e)
         {
+
         }
         #endregion
         #region Undo-redo

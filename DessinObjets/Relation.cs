@@ -13,10 +13,15 @@ namespace DessinObjets
         List<Champ> champs = new List<Champ>();
 
         public Relation(): base()
-        {}
+        {
+            Champ ID = new Champ("ID", typeof(Int16), 0, true, false, true, 1);
+            champs.Add(ID);
+        }
 
         public Relation(Point location, Size size, Color couleurBordure, int épaisseur) : base(location, size, couleurBordure, épaisseur)
         {
+            Champ ID = new Champ("ID", typeof(Int16), 0, true, false, true, 1);
+            champs.Add(ID);
             texte = "Relation";
         }
 
@@ -24,6 +29,20 @@ namespace DessinObjets
         {
             get { return champs; }
             set { champs = value; }
+        }
+
+        public Champ GetCléPrimaire
+        {
+            get
+            {
+                Champ clé = null;
+                foreach(Champ c in Champs)
+                {
+                    if (c.CléPrimaire)
+                        clé = c;
+                }
+                return clé;
+            }
         }
         
         public void CalculTaille(Font police, Graphics graphics, float zoom)
@@ -44,8 +63,8 @@ namespace DessinObjets
 
         public override void Dessine(Graphics graphics, float zoom, Point origin, Point origineZoom)
         {
-          /*  if (supprimé)
-                return;*/
+            if (supprimé)
+                return;
             #region Polices
             Pen p = new Pen(couleurBordure, épaisseur);
             if (IsSelected)

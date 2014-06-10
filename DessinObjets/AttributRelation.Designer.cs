@@ -38,10 +38,10 @@
             this.Auto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NotNull = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.IndexChamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomR = new System.Windows.Forms.Label();
             this.Annuler = new System.Windows.Forms.Button();
             this.OK = new System.Windows.Forms.Button();
             this.NomRelation = new System.Windows.Forms.TextBox();
-            this.NomR = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -141,8 +141,18 @@
             this.IndexChamp.HeaderText = "Index Champ";
             this.IndexChamp.Name = "IndexChamp";
             // 
+            // NomR
+            // 
+            this.NomR.AutoSize = true;
+            this.NomR.Location = new System.Drawing.Point(15, 63);
+            this.NomR.Name = "NomR";
+            this.NomR.Size = new System.Drawing.Size(98, 13);
+            this.NomR.TabIndex = 3;
+            this.NomR.Text = "Nom de la relation :";
+            // 
             // Annuler
             // 
+            this.Annuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Annuler.Location = new System.Drawing.Point(25, 349);
             this.Annuler.Name = "Annuler";
             this.Annuler.Size = new System.Drawing.Size(75, 23);
@@ -153,6 +163,7 @@
             // 
             // OK
             // 
+            this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.OK.Location = new System.Drawing.Point(25, 305);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(75, 23);
@@ -169,19 +180,12 @@
             this.NomRelation.TabIndex = 0;
             this.NomRelation.Tag = "";
             // 
-            // NomR
-            // 
-            this.NomR.AutoSize = true;
-            this.NomR.Location = new System.Drawing.Point(15, 63);
-            this.NomR.Name = "NomR";
-            this.NomR.Size = new System.Drawing.Size(98, 13);
-            this.NomR.TabIndex = 3;
-            this.NomR.Text = "Nom de la relation :";
-            // 
             // AttributRelation
             // 
+            this.AcceptButton = this.OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.Annuler;
             this.ClientSize = new System.Drawing.Size(1057, 416);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.splitter1);

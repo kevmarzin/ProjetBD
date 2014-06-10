@@ -40,6 +40,7 @@
             // 
             // OK
             // 
+            this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.OK.Location = new System.Drawing.Point(345, 90);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(75, 23);
@@ -50,6 +51,7 @@
             // 
             // Annuler
             // 
+            this.Annuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Annuler.Location = new System.Drawing.Point(453, 90);
             this.Annuler.Name = "Annuler";
             this.Annuler.Size = new System.Drawing.Size(75, 23);
@@ -111,8 +113,10 @@
             // 
             // EditionContrainte
             // 
+            this.AcceptButton = this.OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.Annuler;
             this.ClientSize = new System.Drawing.Size(580, 176);
             this.Controls.Add(this.NomRela);
             this.Controls.Add(this.ChampRelation2);
