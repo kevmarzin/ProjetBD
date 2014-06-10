@@ -339,6 +339,8 @@ namespace DessinObjets
                     switch (traitCourant.GetType().Name)
                     {
                         case "Contrainte":
+                            EditionContrainte co = new EditionContrainte((Contrainte)traitCourant, (Relation)traitCourant.Source, (Relation)traitCourant.Destination);
+                            co.ShowDialog();
                             break;
                         case "Lien":
                             break;

@@ -18,14 +18,9 @@ namespace DessinObjets
         public AttributRelation(Relation r)
         {
             InitializeComponent();
-
             NomRelation.Text = "Relation";
-
             GridChamps.Rows[0].SetValues("ID", "Int16", "0", true, false, true, "1");
-
-
-            foreach (Champ c in r.Champs)
-                relation.Champs.Add(c);
+            relation = r;
         }
 
         private void AttributRelation_Load(object sender, EventArgs e)
@@ -41,7 +36,6 @@ namespace DessinObjets
         private void OK_Click(object sender, EventArgs e)
         {
             relation.Texte = NomRelation.Text;
-
             relation.Champs.Clear(); // si on modifie, pour ne pas ajouter des champs en plus
 
             for (int i =0; i<GridChamps.RowCount; i++)

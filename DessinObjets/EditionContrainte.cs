@@ -27,7 +27,14 @@ namespace DessinObjets
                 cléRelation1.Items.Add(ch.ToString());
 
             foreach (Champ ch in relationDestination.Champs)
-                cléRelation2.Items.Add(ch.ToString());            
+                cléRelation2.Items.Add(ch.ToString());
+/*
+            if (contrainte.Nom != null)
+            {
+                cléRelation1.Text=contrainte.ChampSource.Nom;
+                cléRelation2.Text = contrainte.ChampDestination.Nom;
+                NomRelation.Text = contrainte.Nom;
+            }*/
         }
 
         private void label2_Click(object sender, EventArgs e)
