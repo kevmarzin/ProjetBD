@@ -7,22 +7,23 @@ using System.Drawing;
 
 namespace DessinObjets
 {
-    public class Relation : Noeud
-    {
-        
+    public class Entité : Noeud
+    {       
+
         List<Champ> champs = new List<Champ>();
 
-        public Relation(): base()
+        public Entité(): base()
         {
+            texte = "Entité";
             Champ ID = new Champ("ID", typeof(Int16), 0, true, false, true, 1);
             champs.Add(ID);
         }
 
-        public Relation(Point location, Size size, Color couleurBordure, int épaisseur) : base(location, size, couleurBordure, épaisseur)
+        public Entité(Point location, Size size, Color couleurBordure, int épaisseur) : base(location, size, couleurBordure, épaisseur)
         {
+            texte = "Entité";
             Champ ID = new Champ("ID", typeof(Int16), 0, true, false, true, 1);
             champs.Add(ID);
-            texte = "Relation";
         }
 
         public List<Champ> Champs
@@ -51,13 +52,12 @@ namespace DessinObjets
             SizeF size = graphics.MeasureString(Texte, police);
             
             int lignes=champs.Count();
-
-            taille = new Size((int)size.Width + 3, (lignes*15)+(int)size.Height);           
+            taille = new Size((int)size.Width + 3, (lignes*18)+(int)size.Height);           
         }
 
         public Point PositionText(float zoom, Point origin, Point origineZoom, int ligne)
         {
-            Point p= new Point(rectangle.X, (ligne*15)+rectangle.Y);
+            Point p= new Point(rectangle.X, (ligne*18)+rectangle.Y);
             return p;
         }
 
@@ -85,13 +85,19 @@ namespace DessinObjets
             //if ((texte != null) && (texte != ""))
             int ligne = 0;
             graphics.DrawString(texte, police, br, PositionText(zoom, origin, origineZoom,ligne));
-                
+
+            //calcul de la largeur pour pouvoir dessiner le trait
+            SizeF size = graphics.MeasureString(Texte, police);
+
+
+
+
+            graphics.DrawLine(p, new Point(rectangle.X, rectangle.Y + 18), new Point(rectangle.X + (int)size.Width + 3, rectangle.Y + 18));
+
             foreach (Champ c in champs)
             {
-                ligne++;
-
+                ligne++;                
                 graphics.DrawString(c.ToString(), police, br, PositionText(zoom, origin, origineZoom, ligne));
-                
             }
         }
     }

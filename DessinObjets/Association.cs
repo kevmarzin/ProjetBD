@@ -7,28 +7,56 @@ using System.Drawing;
 
 namespace DessinObjets
 {
-    public class Relation : Noeud
+    public class Association : Noeud
     {
-        
+        Entité entitéSource;
+        Entité entitéDestination;
+        Lien lienSource;
+        Lien lienDestination;
+
         List<Champ> champs = new List<Champ>();
 
-        public Relation(): base()
+        public Association(): base()
         {
-            Champ ID = new Champ("ID", typeof(Int16), 0, true, false, true, 1);
-            champs.Add(ID);
         }
 
-        public Relation(Point location, Size size, Color couleurBordure, int épaisseur) : base(location, size, couleurBordure, épaisseur)
+        public Association(Point location, Size size, Color couleurBordure, int épaisseur, Entité S, Entité D)
+            : base(location, size, couleurBordure, épaisseur)
         {
-            Champ ID = new Champ("ID", typeof(Int16), 0, true, false, true, 1);
-            champs.Add(ID);
-            texte = "Relation";
+            texte = "Association";
+            entitéSource = S;
+            entitéDestination = D;
+            //A calculer : Point Location
+            //             Size size
+        }
+
+        public Association(Point location, Size size, Color couleurBordure, int épaisseur, Entité S, Entité D, Lien lS, Lien lD) : base(location, size, couleurBordure, épaisseur)
+        {
+            texte = "Association";
+            entitéSource = S;
+            entitéDestination = D;
+            lienSource = lS;
+            lienDestination = lD;
+            //A calculer : Point Location
+            //             Size size
         }
 
         public List<Champ> Champs
         {
             get { return champs; }
             set { champs = value; }
+        }
+
+        public Lien LienSource
+        {
+            get { return lienSource; }
+            set { lienSource = value; }
+        }
+
+        public Lien LienDestination
+        {
+            get { return lienDestination; }
+            set { lienDestination = value; }
         }
 
         public Champ GetCléPrimaire
@@ -51,13 +79,12 @@ namespace DessinObjets
             SizeF size = graphics.MeasureString(Texte, police);
             
             int lignes=champs.Count();
-
-            taille = new Size((int)size.Width + 3, (lignes*15)+(int)size.Height);           
+            taille = new Size((int)size.Width + 3, (lignes*18)+(int)size.Height);           
         }
 
         public Point PositionText(float zoom, Point origin, Point origineZoom, int ligne)
         {
-            Point p= new Point(rectangle.X, (ligne*15)+rectangle.Y);
+            Point p= new Point(rectangle.X, (ligne*18)+rectangle.Y);
             return p;
         }
 
@@ -79,19 +106,26 @@ namespace DessinObjets
             CalculTaille(police,graphics,zoom);
             rectAffichage = RectangleAffichage(zoom, origin, origineZoom);
             graphics.FillRectangle(new SolidBrush(CouleurFond), rectAffichage);
-            graphics.DrawRectangle(p, rectAffichage);
+            
+            graphics.DrawEllipse(p, rectAffichage);
             Brush br = new SolidBrush(couleurPolice);
             
-            //if ((texte != null) && (texte != ""))
             int ligne = 0;
-            graphics.DrawString(texte, police, br, PositionText(zoom, origin, origineZoom,ligne));
-                
-            foreach (Champ c in champs)
-            {
-                ligne++;
 
-                graphics.DrawString(c.ToString(), police, br, PositionText(zoom, origin, origineZoom, ligne));
-                
+            graphics.DrawString(texte, police, br, PositionText(zoom, origin, origineZoom,ligne));
+
+            if (champs.Count() > 0)
+            {
+                //calcul de la largeur pour pouvoir dessiner le trait
+                SizeF size = graphics.MeasureString(Texte, police);
+
+                graphics.DrawLine(p, new Point(rectangle.X, rectangle.Y + 18), new Point(rectangle.X + (int)size.Width + 3, rectangle.Y + 18));
+
+                foreach (Champ c in champs)
+                {
+                    ligne++;
+                    graphics.DrawString(c.ToString(), police, br, PositionText(zoom, origin, origineZoom, ligne));
+                }
             }
         }
     }

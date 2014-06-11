@@ -15,6 +15,15 @@ namespace DessinObjets
 
         public Contrainte() : base()
         { }
+        public Contrainte(Noeud sour, Noeud dest, Color c, int e) : base(sour, dest, c, e)
+        { }
+
+        public Contrainte(Noeud sour, Noeud dest, Color c, int e, Champ cS, Champ cD)
+            : base(sour, dest, c, e)
+        {
+            champSource = cS;
+            champDestination = cD;
+        }
 
         public string Nom
         {
@@ -32,13 +41,5 @@ namespace DessinObjets
             set { champDestination = value; }
         }
 
-        public Contrainte(Noeud sour, Noeud dest, Color c, int e) : base(sour, dest, c, e)
-        { }
-
-        public Contrainte(Noeud sour, Noeud dest, Color c, int e, Champ cS, Champ cD) : base()
-        {
-            champSource = cS;
-            champDestination = cD;
-        }
     }
 }

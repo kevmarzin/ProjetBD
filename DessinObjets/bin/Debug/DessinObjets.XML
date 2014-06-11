@@ -158,6 +158,260 @@
             le contenu de cette méthode avec l'éditeur de code.
             </summary>
         </member>
+        <member name="T:DessinObjets.Noeud">
+            <summary>
+            La classe Noeud encapsule un rectangle avec son épaisseur et la couleur de son bord
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.supprimé">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.Supprime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.Restaure">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.compteur">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.iD">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.position">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.taille">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.couleurBordure">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.couleurFond">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.épaisseur">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.texte">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.police">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.couleurPolice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.IsSelected">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DessinObjets.Noeud.rectAffichage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.#ctor">
+            <summary>
+            Constructeur vide, nécessaire pour la déserialisation
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.#ctor(System.Drawing.Point,System.Drawing.Size,System.Drawing.Color,System.Int32)">
+            <summary>
+            Construit un Noeud
+            </summary>
+            <param name="location">Centre</param>
+            <param name="size">Taille</param>
+            <param name="couleurBordure">couleur initiale</param>
+            <param name="épaisseur">épaisseur initiale</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.Clone">
+            <summary>
+            Crée un clone du noeud courant
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.RestaureParams(DessinObjets.ISupprimable)">
+            <summary>
+            Méthode générique de restauration des paramètres de l'objet
+            </summary>
+            <param name="ancien">Anciennes valeurs</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.Dessine(System.Drawing.Graphics,System.Single,System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Méthode de dessin
+            </summary>
+            <param name="graphics">zone d'affichage</param>
+            <param name="zoom">Facteur de zoom</param>
+            <param name="origin">Origine du dessin</param>
+            <param name="origineZoom">Centre d'homothétie</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.RectangleAffichage(System.Single,System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Zone d'affichage du noeud
+            </summary>
+            <param name="zoom">Facteur de zoom à partir de l'origine</param>
+            <param name="origin">Origine du dessin</param>
+            <param name="origineZoom">Centre d'homothétie</param>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.CentreDessin(System.Single,System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Centre du noeud à l'affichage
+            </summary>
+            <param name="zoom">Facteur de zoom</param>
+            <param name="origin">Origine du dessin</param>
+            <param name="origineZoom">Centre d'homothétie</param>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.Contains(System.Drawing.Point)">
+            <summary>
+            Teste la présence d'un point
+            </summary>
+            <param name="pt">Point à tester</param>
+            <returns>true si la forme contient le point</returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.Déplace(System.Drawing.Point)">
+            <summary>
+            Déplace le rectangle
+            </summary>
+            <param name="p">Nouvel emplacement</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.DéplaceVers(System.Drawing.Point)">
+            <summary>
+            Déplacement relatif du noeud
+            </summary>
+            <param name="Vecteur">Vecteur de déplacement</param>
+        </member>
+        <member name="M:DessinObjets.Noeud.Select">
+            <summary>
+            Sélectionne le noeud
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.UnSelect">
+            <summary>
+             Déselectionne le noeud
+            </summary>
+        </member>
+        <member name="M:DessinObjets.Noeud.ToXML">
+            <summary>
+            Génération XML
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DessinObjets.Noeud.#ctor(System.Xml.XmlNode)">
+            <summary>
+            Création d'un noeud à partir d'une structure XML
+            </summary>
+            <param name="xNN"></param>
+        </member>
+        <member name="P:DessinObjets.Noeud.ID">
+            <summary>
+            Identificateur
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Position">
+            <summary>
+            Localisation
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Taille">
+            <summary>
+            Dimensions
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Epaisseur">
+            <summary>
+            Epaisseur du bord
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.CouleurBord">
+            <summary>
+            Couleur du bord
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.CouleurFond">
+            <summary>
+            Couleur du fond
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Texte">
+            <summary>
+            Texte
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Police">
+            <summary>
+            Police
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.CouleurPolice">
+            <summary>
+            Couleur de la police
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Left">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Right">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Top">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Bottom">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Centre">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.Supprimé">
+            <summary>
+            Vrai si l'objet est supprimé
+            </summary>
+        </member>
+        <member name="P:DessinObjets.Noeud.rectangle">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:DessinObjets.AttributRelation.components">
             <summary>
             Required designer variable.
@@ -304,6 +558,23 @@
             Vrai si le noeud est sélectionn"
             </summary>
         </member>
+        <member name="F:DessinObjets.EditionAssociation.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.EditionAssociation.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DessinObjets.EditionAssociation.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="F:DessinObjets.EditionContrainte.components">
             <summary>
             Required designer variable.
@@ -316,6 +587,40 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:DessinObjets.EditionContrainte.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:DessinObjets.EditionEntité.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.EditionEntité.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DessinObjets.EditionEntité.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:DessinObjets.EditionLien.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DessinObjets.EditionLien.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DessinObjets.EditionLien.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -738,260 +1043,6 @@
         <member name="P:DessinObjets.AspectBouton.Image">
             <summary>
             Image du bouton
-            </summary>
-        </member>
-        <member name="T:DessinObjets.Noeud">
-            <summary>
-            La classe Noeud encapsule un rectangle avec son épaisseur et la couleur de son bord
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.supprimé">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:DessinObjets.Noeud.Supprime">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:DessinObjets.Noeud.Restaure">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.compteur">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.iD">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.position">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.taille">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.couleurBordure">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.couleurFond">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.épaisseur">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.texte">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.police">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.couleurPolice">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.IsSelected">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:DessinObjets.Noeud.rectAffichage">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:DessinObjets.Noeud.#ctor">
-            <summary>
-            Constructeur vide, nécessaire pour la déserialisation
-            </summary>
-        </member>
-        <member name="M:DessinObjets.Noeud.#ctor(System.Drawing.Point,System.Drawing.Size,System.Drawing.Color,System.Int32)">
-            <summary>
-            Construit un Noeud
-            </summary>
-            <param name="location">Centre</param>
-            <param name="size">Taille</param>
-            <param name="couleurBordure">couleur initiale</param>
-            <param name="épaisseur">épaisseur initiale</param>
-        </member>
-        <member name="M:DessinObjets.Noeud.Clone">
-            <summary>
-            Crée un clone du noeud courant
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DessinObjets.Noeud.RestaureParams(DessinObjets.ISupprimable)">
-            <summary>
-            Méthode générique de restauration des paramètres de l'objet
-            </summary>
-            <param name="ancien">Anciennes valeurs</param>
-        </member>
-        <member name="M:DessinObjets.Noeud.Dessine(System.Drawing.Graphics,System.Single,System.Drawing.Point,System.Drawing.Point)">
-            <summary>
-            Méthode de dessin
-            </summary>
-            <param name="graphics">zone d'affichage</param>
-            <param name="zoom">Facteur de zoom</param>
-            <param name="origin">Origine du dessin</param>
-            <param name="origineZoom">Centre d'homothétie</param>
-        </member>
-        <member name="M:DessinObjets.Noeud.RectangleAffichage(System.Single,System.Drawing.Point,System.Drawing.Point)">
-            <summary>
-            Zone d'affichage du noeud
-            </summary>
-            <param name="zoom">Facteur de zoom à partir de l'origine</param>
-            <param name="origin">Origine du dessin</param>
-            <param name="origineZoom">Centre d'homothétie</param>
-            <returns></returns>
-        </member>
-        <member name="M:DessinObjets.Noeud.CentreDessin(System.Single,System.Drawing.Point,System.Drawing.Point)">
-            <summary>
-            Centre du noeud à l'affichage
-            </summary>
-            <param name="zoom">Facteur de zoom</param>
-            <param name="origin">Origine du dessin</param>
-            <param name="origineZoom">Centre d'homothétie</param>
-            <returns></returns>
-        </member>
-        <member name="M:DessinObjets.Noeud.Contains(System.Drawing.Point)">
-            <summary>
-            Teste la présence d'un point
-            </summary>
-            <param name="pt">Point à tester</param>
-            <returns>true si la forme contient le point</returns>
-        </member>
-        <member name="M:DessinObjets.Noeud.Déplace(System.Drawing.Point)">
-            <summary>
-            Déplace le rectangle
-            </summary>
-            <param name="p">Nouvel emplacement</param>
-        </member>
-        <member name="M:DessinObjets.Noeud.DéplaceVers(System.Drawing.Point)">
-            <summary>
-            Déplacement relatif du noeud
-            </summary>
-            <param name="Vecteur">Vecteur de déplacement</param>
-        </member>
-        <member name="M:DessinObjets.Noeud.Select">
-            <summary>
-            Sélectionne le noeud
-            </summary>
-        </member>
-        <member name="M:DessinObjets.Noeud.UnSelect">
-            <summary>
-             Déselectionne le noeud
-            </summary>
-        </member>
-        <member name="M:DessinObjets.Noeud.ToXML">
-            <summary>
-            Génération XML
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DessinObjets.Noeud.#ctor(System.Xml.XmlNode)">
-            <summary>
-            Création d'un noeud à partir d'une structure XML
-            </summary>
-            <param name="xNN"></param>
-        </member>
-        <member name="P:DessinObjets.Noeud.ID">
-            <summary>
-            Identificateur
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Position">
-            <summary>
-            Localisation
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Taille">
-            <summary>
-            Dimensions
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Epaisseur">
-            <summary>
-            Epaisseur du bord
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.CouleurBord">
-            <summary>
-            Couleur du bord
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.CouleurFond">
-            <summary>
-            Couleur du fond
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Texte">
-            <summary>
-            Texte
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Police">
-            <summary>
-            Police
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.CouleurPolice">
-            <summary>
-            Couleur de la police
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Left">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Right">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Top">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Bottom">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Centre">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.Supprimé">
-            <summary>
-            Vrai si l'objet est supprimé
-            </summary>
-        </member>
-        <member name="P:DessinObjets.Noeud.rectangle">
-            <summary>
-            
             </summary>
         </member>
         <member name="M:DessinObjets.Program.Main">

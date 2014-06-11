@@ -106,6 +106,7 @@
     <Compile Include="APropos.Designer.cs">
       <DependentUpon>APropos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Association.cs" />
     <Compile Include="AttributRelation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,12 +116,32 @@
     <Compile Include="Champ.cs" />
     <Compile Include="Construit.cs" />
     <Compile Include="Contrainte.cs" />
+    <Compile Include="EditionAssociation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditionAssociation.Designer.cs">
+      <DependentUpon>EditionAssociation.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditionContrainte.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditionContrainte.Designer.cs">
       <DependentUpon>EditionContrainte.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditionEntité.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditionEntité.Designer.cs">
+      <DependentUpon>EditionEntité.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditionLien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditionLien.Designer.cs">
+      <DependentUpon>EditionLien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entité.cs" />
+    <Compile Include="Lien.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,8 +186,17 @@
     <EmbeddedResource Include="AttributRelation.resx">
       <DependentUpon>AttributRelation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditionAssociation.resx">
+      <DependentUpon>EditionAssociation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditionContrainte.resx">
       <DependentUpon>EditionContrainte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditionEntité.resx">
+      <DependentUpon>EditionEntité.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditionLien.resx">
+      <DependentUpon>EditionLien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphe.af.resx">
       <DependentUpon>Graphe.cs</DependentUpon>

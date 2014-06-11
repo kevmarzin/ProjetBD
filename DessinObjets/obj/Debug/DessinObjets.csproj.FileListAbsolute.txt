@@ -190,3 +190,6 @@ V:\BD\Projet\DessinObjets\DessinObjets\obj\Debug\DessinObjets.EditionContrainte.
 \\info\Etudiants\Home\adrbounader\Documents\GitHub\ProjetBD\DessinObjets\obj\Debug\fr\DessinObjets.resources.dll
 \\info\Etudiants\Home\adrbounader\Documents\GitHub\ProjetBD\DessinObjets\obj\Debug\DessinObjets.exe.manifest
 \\info\Etudiants\Home\adrbounader\Documents\GitHub\ProjetBD\DessinObjets\obj\Debug\DessinObjets.application
+\\info\Etudiants\Home\nicvidal\Desktop\GitHub\ProjetBD\DessinObjets\obj\Debug\DessinObjets.EditionEntité.resources
+\\info\Etudiants\Home\nicvidal\Desktop\GitHub\ProjetBD\DessinObjets\obj\Debug\DessinObjets.EditionAssociation.resources
+\\info\Etudiants\Home\nicvidal\Desktop\GitHub\ProjetBD\DessinObjets\obj\Debug\DessinObjets.EditionLien.resources

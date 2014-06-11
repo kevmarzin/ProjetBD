@@ -230,6 +230,13 @@ namespace DessinObjets
                     if (pa.ShowDialog() == DialogResult.OK)
                         noeuds.Add(noeud);
                     break;
+
+                case TypeSchéma.EntitéAssociation:
+                    noeud = new Entité(point, option.Taille_Noeud, option.Couleur_Noeud, option.Épaisseur_Noeud);
+                    EditionEntité ed = new EditionEntité((Entité)noeud);
+                    if (ed.ShowDialog() == DialogResult.OK)
+                        noeuds.Add(noeud);
+                    break;
            }
             return noeud;
         }
@@ -318,6 +325,9 @@ namespace DessinObjets
                         case "Entité":
                             libellés.Add("Editer l'entité");
                             break;
+                        case "Association":
+                            libellés.Add("Editer l'association");
+                            break;
                     }
                     ContextMenuStrip cm = new ContextMenuStrip();
                     foreach (string t in libellés)
@@ -343,6 +353,8 @@ namespace DessinObjets
                             co.ShowDialog();
                             break;
                         case "Lien":
+                            EditionLien eL = new EditionLien((Lien)traitCourant);
+                            eL.ShowDialog();
                             break;
                         default:
                             Parametres pa = new Parametres(traitCourant, false);
@@ -496,6 +508,30 @@ namespace DessinObjets
                                     pa.ShowDialog();
                                     break;
                                 case TypeSchéma.EntitéAssociation:
+                                    
+                                    if (noeudCourant.GetType() != typeof(Association) && fin.GetType() != typeof(Association))
+                                    {
+                                        Point pos = new Point(Math.Abs(noeudCourant.Position.X + fin.Position.X)/2, Math.Abs(noeudCourant.Position.Y + fin.Position.Y)/2);
+                                        Association asso = new Association(pos, new Size(8, 8), option.Couleur_Lien, option.Épaisseur_Lien, (Entité)noeudCourant, (Entité)fin);
+
+                                        trait = new Lien(noeudCourant, asso, option.Couleur_Lien, option.Épaisseur_Lien);
+                                        trait_1 = new Lien(asso, fin, option.Couleur_Lien, option.Épaisseur_Lien);
+
+                                        asso.LienSource = (Lien)trait;
+                                        asso.LienDestination = (Lien)trait_1;
+
+                                        EditionAssociation eA = new EditionAssociation(asso);
+
+                                        if (eA.ShowDialog() == DialogResult.OK)
+                                        {
+                                            noeuds.Add(asso);
+                                        }
+                                        else
+                                        {
+                                            trait = null; //si on clique sur annuler, on ne veut plus ajouter le lien
+                                            trait_1 = null;
+                                        }
+                                    }
                                     break;
                             }
                         }
@@ -683,6 +719,20 @@ namespace DessinObjets
                         #region Edition de la relation
                         AttributRelation dial = new AttributRelation((Relation)noeudCourant);
                         dial.ShowDialog();
+                        Refresh();
+                        break;
+                        #endregion
+                    case "Editer l'entité":
+                        #region Edition de l'entité
+                        EditionEntité eE = new EditionEntité((Entité)noeudCourant);
+                        eE.ShowDialog();
+                        Refresh();
+                        break;
+                        #endregion
+                    case "Editer l'association":
+                        #region Edition de l'association
+                        EditionAssociation eA = new EditionAssociation((Association)noeudCourant);
+                        eA.ShowDialog();
                         Refresh();
                         break;
                         #endregion

@@ -13,7 +13,7 @@ namespace DessinObjets
     public partial class AttributRelation : Form
     {
         Relation relation;
-        int nb_lignes=1;
+        //int nb_lignes=1;
 
         public AttributRelation(Relation r)
         {
@@ -54,6 +54,9 @@ namespace DessinObjets
                 {
                     switch(GridChamps.Rows[i].Cells[1].Value.ToString())
                     {
+
+                        //nouvChamp.Type = Type.GetType("System."+ GridChamps.Rows[i].Cells[1].Value.ToString());
+
                         case "Byte":
                             nouvChamp.Type = typeof(Byte);
                             break;

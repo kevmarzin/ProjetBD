@@ -31,7 +31,7 @@ namespace DessinObjets
 
             if (contrainte.Nom != null)
             {
-                cléRelation1.Text=contrainte.ChampSource.Nom;
+                cléRelation1.Text = contrainte.ChampSource.Nom;
                 cléRelation2.Text = contrainte.ChampDestination.Nom;
                 NomRelation.Text = contrainte.Nom;
             }
