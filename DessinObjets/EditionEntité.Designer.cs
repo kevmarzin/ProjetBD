@@ -70,7 +70,7 @@
             // 
             // ChampsEntité
             // 
-            this.ChampsEntité.BackgroundColor = System.Drawing.Color.Green;
+            this.ChampsEntité.BackgroundColor = System.Drawing.Color.Brown;
             this.ChampsEntité.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ChampsEntité.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nom,

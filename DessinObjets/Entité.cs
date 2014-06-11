@@ -75,6 +75,7 @@ namespace DessinObjets
             if (fontSize < 6)
                 fontSize = 6;
             police = new Font(police.FontFamily, fontSize, FontStyle.Regular);
+            Font policeID = new Font(police.FontFamily, fontSize, FontStyle.Underline);
             #endregion
             CalculTaille(police,graphics,zoom);
             rectAffichage = RectangleAffichage(zoom, origin, origineZoom);
@@ -96,8 +97,11 @@ namespace DessinObjets
 
             foreach (Champ c in champs)
             {
-                ligne++;                
-                graphics.DrawString(c.ToString(), police, br, PositionText(zoom, origin, origineZoom, ligne));
+                ligne++;
+                if (c.CléPrimaire)
+                    graphics.DrawString(c.ToString(), policeID, br, PositionText(zoom, origin, origineZoom, ligne));
+                else
+                    graphics.DrawString(c.ToString(), police, br, PositionText(zoom, origin, origineZoom, ligne));
             }
         }
     }
