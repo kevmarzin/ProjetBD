@@ -22,6 +22,8 @@ namespace DessinObjets
             CardinalitéSource.Text = "1,n";
             CardinalitéDestination.Text = "1,n";
             nomAssociation.Text = association.Texte;
+            CardinalitéSource.Text = association.LienSource.Cardinalité;
+            CardinalitéDestination.Text = association.LienDestination.Cardinalité;
             champsAssociation.Rows.Add(1);
             int ligne = 0;
             foreach (Champ ch in a.Champs)

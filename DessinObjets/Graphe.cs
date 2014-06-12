@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Xml;
+using System.Data;
 /* Version 1.0 
  *     avec menu contextuel de modification des paramètres et de suppression d'un noeud ou d'un trait. 
  *     sauvegarde XML
@@ -99,7 +100,46 @@ namespace DessinObjets
         {
             base_données = baseSQL;
             this.Text = baseSQL;
-            //A faire
+
+            AccèsSQL AccSQL = new AccèsSQL(baseSQL);
+
+            Point point = new Point(10, 23);
+            foreach (DataTable d in AccSQL.Tables)
+            {
+                if (d.TableName != "sysdiagrams")
+                {
+                    Relation r = new Relation(point, option.Taille_Noeud, option.Couleur_Noeud, option.Épaisseur_Noeud, d);
+                    noeuds.Add(r);
+                }
+            }
+            //foreach (DataTable d in AccSQL.ForeignKeys)
+            //{
+            //    Contrainte c = new
+            //}
+            Relation r1 = null, r2 = null;
+            Champ chSource = null, chDest = null;
+            for (int i = 0; i < AccSQL.ForeignKeys.Rows.Count; i++)
+            {
+               foreach(Relation r in noeuds)
+               {
+                   if(r.Texte == AccSQL.ForeignKeys.Rows[i].ItemArray[2].ToString())
+                       r1 = r;
+                   if(r.Texte == AccSQL.ForeignKeys.Rows[i].ItemArray[8].ToString())
+                       r2 = r;
+               }
+                foreach(Champ ch in r1.Champs)
+                {
+                    if(ch.Nom == AccSQL.ForeignKeys.Rows[i].ItemArray[3].ToString())
+                        chSource = ch;
+                }
+                foreach(Champ ch in r2.Champs)
+                {
+                    if(ch.Nom == AccSQL.ForeignKeys.Rows[i].ItemArray[9].ToString())
+                        chDest = ch;
+                }
+                Contrainte c = new Contrainte(r1, r2, Color.Black, 2,chSource,chDest);
+                traits.Add(c);
+            }
         }
         private void Création(TypeSchéma type, Form parent, string texte)
         {

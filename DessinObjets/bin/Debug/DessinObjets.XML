@@ -9,17 +9,12 @@
             Classe destinée à simplifier les accès à la base de données
             </summary>
         </member>
-        <member name="M:DessinObjets.AccèsSQL.#ctor(System.String,System.String)">
+        <member name="M:DessinObjets.AccèsSQL.#ctor(System.String)">
             <summary>
             Création d'un accès à la base de données et obtention de la liste des tables
             et des contraintes référentielles
             </summary>
             <param name="catalog">Nom de la base</param>
-        </member>
-        <member name="M:DessinObjets.AccèsSQL.Dispose">
-            <summary>
-            Implémentation de l'interface IDisposable
-            </summary>
         </member>
         <member name="M:DessinObjets.AccèsSQL.ExecuteCommand(System.String)">
             <summary>

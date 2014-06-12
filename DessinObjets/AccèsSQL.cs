@@ -3,21 +3,32 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.Sql;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DessinObjets
 {
     /// <summary>
     /// Classe destinée à simplifier les accès à la base de données
     /// </summary>
-    public sealed class  AccèsSQL:IDisposable
+    public class AccèsSQL
     {
-        #region Membres
+
         OleDbConnection dbCon;
-        DataTableCollection collectionTables;
+
+        public OleDbConnection DbCon
+        {
+            get { return dbCon; }
+            set { dbCon = value; }
+        }
+        DataTableCollection Collectiontables;
+
+
         DataTable foreignKeys;
         string conStr;
-        #endregion
         #region Propriétés
+        public bool IsOpen { get { return dbCon.State == ConnectionState.Open; } }
         /// <summary>
         /// Chaine de connexion à la base de données
         /// </summary>
@@ -31,8 +42,8 @@ namespace DessinObjets
         /// </summary>
         public DataTableCollection Tables
         {
-            get { return collectionTables; }
-            set { collectionTables = value; }
+            get { return Collectiontables; }
+            set { Collectiontables = value; }
         }
         /// <summary>
         /// Liste des contraintes référentielles
@@ -43,15 +54,15 @@ namespace DessinObjets
             set { foreignKeys = value; }
         }
         #endregion
-        #region Exemple de code d'accès à une base de données ODBC
         /// <summary>
         /// Création d'un accès à la base de données et obtention de la liste des tables
         /// et des contraintes référentielles
         /// </summary>
         /// <param name="catalog">Nom de la base</param>
-        public AccèsSQL(string serveur, string catalog)
+        public AccèsSQL(string catalog)
         {
-            conStr = @"Provider=SQLOLEDB;Data Source=" + serveur + ";Initial Catalog=" + catalog + ";Uid=ETD;Pwd=ETD";
+            // conStr = @"Provider=SQLOLEDB;Data Source=INFO-SIMPLET;Initial Catalog=" + catalog + ";Integrated Security=SSPI";
+            conStr = @"Provider=SQLOLEDB;Data Source=INFO-SIMPLET;Initial Catalog=" + catalog + ";Uid=ETD;Pwd=ETD";
             try
             {
                 dbCon = new OleDbConnection(conStr);
@@ -62,19 +73,11 @@ namespace DessinObjets
                 System.Windows.Forms.MessageBox.Show("Connexion impossible");
                 return;
             }
-            if (dbCon.State== ConnectionState.Open)
+            if (dbCon.State == ConnectionState.Open)
             {
-                collectionTables = GetTables(dbCon);
+                Collectiontables = GetTables(dbCon);
                 foreignKeys = GetForeignKeys(dbCon);
             }
-        }
-        /// <summary>
-        /// Implémentation de l'interface IDisposable
-        /// </summary>
-        public void Dispose()
-        {
-
-            dbCon.Dispose();
         }
         private DataTableCollection GetTables(OleDbConnection dbCon)
         {
@@ -87,13 +90,13 @@ namespace DessinObjets
             DataSet baseDeDonnees = new DataSet();
             foreach (string tableName in Tables)
             {
-                string SQL = "Select * from ?" ;
+                string SQL = "Select * from " + tableName;
                 OleDbDataAdapter adapter = new OleDbDataAdapter(SQL, dbCon);
                 adapter.FillSchema(baseDeDonnees, SchemaType.Source, tableName);
             }
             return baseDeDonnees.Tables;
         }
-        private DataTable GetForeignKeys(OleDbConnection dbCon )
+        private DataTable GetForeignKeys(OleDbConnection dbCon)
         {
             return dbCon.GetOleDbSchemaTable(OleDbSchemaGuid.Foreign_Keys, new object[] { null, null, null, null });
         }
@@ -126,10 +129,10 @@ namespace DessinObjets
             OleDbCommand cmd = new OleDbCommand(query, dbCon);
             return cmd.ExecuteReader();
         }
-        public List<object> FetchRows(string constr, string query)
+        private static List<object> FetchRow(string constr, string query)
         {
             OleDbConnection dbCon = new OleDbConnection(constr);
-            dbCon.Open(); 
+            dbCon.Open();
             OleDbCommand cmd = new OleDbCommand(query, dbCon);
             OleDbDataReader lecteur = cmd.ExecuteReader();
             List<object> ob = new List<object>();
@@ -173,7 +176,6 @@ namespace DessinObjets
             }
             return ob;
         }
-        #endregion
         #region Méthodes statiques
         /// <summary>
         /// Retourne les instances SQL Server disponibles sur le réseau
@@ -214,5 +216,5 @@ namespace DessinObjets
         }
         #endregion
     }
-    
+
 }
